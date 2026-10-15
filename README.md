@@ -15,7 +15,7 @@ Each `#[function]` is a tool the agent can call:
 - its doc comment is the description the model reads;
 - its input and output types, which derive `JsonSchema`, become the tool's schemas.
 
-`package!` lists the functions and generates `main`. Inside a call, the session's Volume is at `/tmp` and `/data`, and the package's own `assets/` directory is at `/package`. Make HTTP requests with `subako_function_sdk::http`.
+`package!` lists the functions and generates `main`, which serves them as an MCP server over stdio (Subako's function ABI 1). Inside a call, the session's Volume is at `/volume/tmp` and `/volume/data`, and the package's own `assets/` directory is at `/package`. Make HTTP requests with `subako_function_sdk::http`, and show the model an image from the Volume by returning an `Answer` with `with_image_file`.
 
 ## Test
 
